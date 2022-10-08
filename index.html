@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="shitao">
+
+<title>python-in-quarto</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="index_files/libs/clipboard/clipboard.min.js"></script>
+<script src="index_files/libs/quarto-html/quarto.js"></script>
+<script src="index_files/libs/quarto-html/popper.min.js"></script>
+<script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="index_files/libs/quarto-html/anchor.min.js"></script>
+<link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="index_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="index_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="index_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#data-import-and-basic-manipulation" id="toc-data-import-and-basic-manipulation" class="nav-link active" data-scroll-target="#data-import-and-basic-manipulation">Data import and basic manipulation</a></li>
+  <li><a href="#task-1" id="toc-task-1" class="nav-link" data-scroll-target="#task-1">Task 1</a></li>
+  <li><a href="#using-python-visualization-libraries-in-rstudio" id="toc-using-python-visualization-libraries-in-rstudio" class="nav-link" data-scroll-target="#using-python-visualization-libraries-in-rstudio">Using Python Visualization Libraries in RStudio</a>
+  <ul class="collapse">
+  <li><a href="#matplotlib" id="toc-matplotlib" class="nav-link" data-scroll-target="#matplotlib">Matplotlib</a></li>
+  <li><a href="#pandas" id="toc-pandas" class="nav-link" data-scroll-target="#pandas">Pandas</a></li>
+  <li><a href="#seaborn" id="toc-seaborn" class="nav-link" data-scroll-target="#seaborn">Seaborn</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">python-in-quarto</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>shitao </p>
+          </div>
+  </div>
+    
+    
+  </div>
+  
+
+</header>
+
+<p>以下测试代码来自<a href="https://hongtaoh.com/en/2022/10/05/wrangling/">这里</a>。</p>
+<p>Some content …</p>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> altair <span class="im">as</span> alt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="data-import-and-basic-manipulation" class="level1">
+<h1>Data import and basic manipulation</h1>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'aiddata.csv'</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>aiddata_id</th>
+      <th>aiddata_2_id</th>
+      <th>year</th>
+      <th>donor</th>
+      <th>recipient</th>
+      <th>commitment_amount_usd_constant</th>
+      <th>coalesced_purpose_code</th>
+      <th>coalesced_purpose_name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2414478.0</td>
+      <td>NaN</td>
+      <td>1977</td>
+      <td>Saudi Arabia</td>
+      <td>India</td>
+      <td>348718518.0</td>
+      <td>23030</td>
+      <td>Power generation/renewable sources</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2414509.0</td>
+      <td>NaN</td>
+      <td>1977</td>
+      <td>Saudi Arabia</td>
+      <td>Brazil</td>
+      <td>191647004.0</td>
+      <td>23040</td>
+      <td>Electrical transmission/ distribution</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2414635.0</td>
+      <td>NaN</td>
+      <td>1983</td>
+      <td>Saudi Arabia</td>
+      <td>India</td>
+      <td>79371799.0</td>
+      <td>21030</td>
+      <td>Rail transport</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2414665.0</td>
+      <td>NaN</td>
+      <td>1984</td>
+      <td>Saudi Arabia</td>
+      <td>Taiwan</td>
+      <td>212202942.0</td>
+      <td>21030</td>
+      <td>Rail transport</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2414667.0</td>
+      <td>NaN</td>
+      <td>1984</td>
+      <td>Saudi Arabia</td>
+      <td>Korea</td>
+      <td>134511154.0</td>
+      <td>21040</td>
+      <td>Water transport</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># don't actually need the first two columns:</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.iloc[:, <span class="dv">2</span>:]</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># rename the columns</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>df.columns <span class="op">=</span> [<span class="st">'year'</span>, <span class="st">'donor'</span>, <span class="st">'recipient'</span>, <span class="st">'amount'</span>, <span class="st">'purpose_code'</span>, <span class="st">'purpose_name'</span>]</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>year</th>
+      <th>donor</th>
+      <th>recipient</th>
+      <th>amount</th>
+      <th>purpose_code</th>
+      <th>purpose_name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1977</td>
+      <td>Saudi Arabia</td>
+      <td>India</td>
+      <td>348718518.0</td>
+      <td>23030</td>
+      <td>Power generation/renewable sources</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1977</td>
+      <td>Saudi Arabia</td>
+      <td>Brazil</td>
+      <td>191647004.0</td>
+      <td>23040</td>
+      <td>Electrical transmission/ distribution</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1983</td>
+      <td>Saudi Arabia</td>
+      <td>India</td>
+      <td>79371799.0</td>
+      <td>21030</td>
+      <td>Rail transport</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1984</td>
+      <td>Saudi Arabia</td>
+      <td>Taiwan</td>
+      <td>212202942.0</td>
+      <td>21030</td>
+      <td>Rail transport</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1984</td>
+      <td>Saudi Arabia</td>
+      <td>Korea</td>
+      <td>134511154.0</td>
+      <td>21040</td>
+      <td>Water transport</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check the shape</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>df.shape</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># close to 10K rows!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>(98540, 6)</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check year range</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">min</span>(df.year), <span class="bu">max</span>(df.year)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<pre><code>(1973, 2013)</code></pre>
+</div>
+</div>
+</section>
+<section id="task-1" class="level1">
+<h1>Task 1</h1>
+<p>Some content …</p>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We first get the donation data</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>donation_data <span class="op">=</span> []</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> group <span class="kw">in</span> df.groupby([<span class="st">'year'</span>, <span class="st">'donor'</span>]):</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># total amount of donation in that year for this country</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    total_yearly_donation <span class="op">=</span> <span class="bu">sum</span>(group[<span class="dv">1</span>].amount)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># year, country name, total</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    donation_data.append(</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>        (group[<span class="dv">0</span>][<span class="dv">0</span>], group[<span class="dv">0</span>][<span class="dv">1</span>], total_yearly_donation))</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>donation_df <span class="op">=</span> pd.DataFrame(</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    donation_data, columns<span class="op">=</span>[<span class="st">'year'</span>,<span class="st">'country'</span>,<span class="st">'donation'</span>])</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>donation_df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>year</th>
+      <th>country</th>
+      <th>donation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1973</td>
+      <td>Australia</td>
+      <td>46285863.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1973</td>
+      <td>Belgium</td>
+      <td>39251336.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1973</td>
+      <td>Canada</td>
+      <td>437928427.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1973</td>
+      <td>France</td>
+      <td>247189555.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1973</td>
+      <td>Germany</td>
+      <td>562232384.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Then we get the receiving data</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>receiving_data <span class="op">=</span> []</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> group <span class="kw">in</span> df.groupby([<span class="st">'year'</span>, <span class="st">'recipient'</span>]):</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># total amount of receiving in that year for this country</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    total_yearly_receiving <span class="op">=</span> <span class="bu">sum</span>(group[<span class="dv">1</span>].amount)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># year, country name, total</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    receiving_data.append(</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>        (group[<span class="dv">0</span>][<span class="dv">0</span>], group[<span class="dv">0</span>][<span class="dv">1</span>], total_yearly_receiving))</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>receiving_df <span class="op">=</span> pd.DataFrame(</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    receiving_data, columns<span class="op">=</span>[<span class="st">'year'</span>,<span class="st">'country'</span>,<span class="st">'receiving'</span>])</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>receiving_df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>year</th>
+      <th>country</th>
+      <th>receiving</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1973</td>
+      <td>Brazil</td>
+      <td>3.120750e+08</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1973</td>
+      <td>Chile</td>
+      <td>8.805608e+07</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1973</td>
+      <td>Colombia</td>
+      <td>5.499448e+08</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1973</td>
+      <td>Cyprus</td>
+      <td>9.613414e+06</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1973</td>
+      <td>India</td>
+      <td>2.285257e+09</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>all_cntry <span class="op">=</span> <span class="bu">list</span>(df.donor) <span class="op">+</span> <span class="bu">list</span>(df.recipient)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>all_cntry <span class="op">=</span> <span class="bu">list</span>(<span class="bu">set</span>(all_cntry))</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># there are in total 47 unique countries</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(all_cntry)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>47</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We have so many countries. It's difficult to visualize them all in one plot</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># So I am assigning groups to countries. </span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Basically, I want to plot 4 countires in each figure</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>cntry_group_list <span class="op">=</span> <span class="bu">list</span>(np.arange(<span class="dv">1</span>,<span class="dv">13</span>)) <span class="op">*</span> <span class="dv">4</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="kw">del</span> cntry_group_list[<span class="op">-</span><span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>receiving_df[receiving_df.year <span class="op">==</span> <span class="dv">1973</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>year</th>
+      <th>country</th>
+      <th>receiving</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1973</td>
+      <td>Brazil</td>
+      <td>3.120750e+08</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1973</td>
+      <td>Chile</td>
+      <td>8.805608e+07</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1973</td>
+      <td>Colombia</td>
+      <td>5.499448e+08</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1973</td>
+      <td>Cyprus</td>
+      <td>9.613414e+06</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1973</td>
+      <td>India</td>
+      <td>2.285257e+09</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1973</td>
+      <td>Korea</td>
+      <td>1.363707e+09</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1973</td>
+      <td>Kuwait</td>
+      <td>3.254830e+05</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>1973</td>
+      <td>Saudi Arabia</td>
+      <td>6.509700e+04</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>1973</td>
+      <td>Thailand</td>
+      <td>2.063634e+08</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>1973</td>
+      <td>United Arab Emirates</td>
+      <td>6.509700e+04</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># same issue for donation data</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>donation_df[donation_df.year <span class="op">==</span> <span class="dv">1973</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>year</th>
+      <th>country</th>
+      <th>donation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1973</td>
+      <td>Australia</td>
+      <td>4.628586e+07</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1973</td>
+      <td>Belgium</td>
+      <td>3.925134e+07</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1973</td>
+      <td>Canada</td>
+      <td>4.379284e+08</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1973</td>
+      <td>France</td>
+      <td>2.471896e+08</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1973</td>
+      <td>Germany</td>
+      <td>5.622324e+08</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1973</td>
+      <td>Italy</td>
+      <td>1.667191e+08</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1973</td>
+      <td>Japan</td>
+      <td>9.389659e+08</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>1973</td>
+      <td>Netherlands</td>
+      <td>1.627509e+08</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>1973</td>
+      <td>Norway</td>
+      <td>3.587485e+07</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>1973</td>
+      <td>Sweden</td>
+      <td>1.683693e+08</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>1973</td>
+      <td>Switzerland</td>
+      <td>1.406094e+07</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>1973</td>
+      <td>United Kingdom</td>
+      <td>4.425792e+08</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>1973</td>
+      <td>United States</td>
+      <td>1.553264e+09</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>donation_dfs <span class="op">=</span> []</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> group <span class="kw">in</span> donation_df.groupby(<span class="st">'year'</span>):</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    year <span class="op">=</span> group[<span class="dv">0</span>]</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    present_cntry <span class="op">=</span> group[<span class="dv">1</span>].country.tolist()</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    absent_cntry <span class="op">=</span> [x <span class="cf">for</span> x <span class="kw">in</span> all_cntry <span class="cf">if</span> x <span class="kw">not</span> <span class="kw">in</span> present_cntry]</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    absent_df <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">'year'</span>: year,</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">'country'</span>: absent_cntry,</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>        <span class="st">'donation'</span>: <span class="dv">0</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>    dff <span class="op">=</span> pd.concat([group[<span class="dv">1</span>], absent_df], ignore_index <span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>    dff.sort_values(by<span class="op">=</span><span class="st">'country'</span>, ascending<span class="op">=</span><span class="va">True</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>    dff[<span class="st">'group'</span>] <span class="op">=</span> cntry_group_list</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>    donation_dfs.append(dff)</span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>donation <span class="op">=</span> pd.concat(donation_dfs, ignore_index <span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>donation.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>year</th>
+      <th>country</th>
+      <th>donation</th>
+      <th>group</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1973</td>
+      <td>Australia</td>
+      <td>46285863.0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1973</td>
+      <td>Austria</td>
+      <td>0.0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1973</td>
+      <td>Belgium</td>
+      <td>39251336.0</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1973</td>
+      <td>Brazil</td>
+      <td>0.0</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1973</td>
+      <td>Canada</td>
+      <td>437928427.0</td>
+      <td>5</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>receiving_dfs <span class="op">=</span> []</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> group <span class="kw">in</span> receiving_df.groupby(<span class="st">'year'</span>):</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    year <span class="op">=</span> group[<span class="dv">0</span>]</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    present_cntry <span class="op">=</span> group[<span class="dv">1</span>].country.tolist()</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    absent_cntry <span class="op">=</span> [x <span class="cf">for</span> x <span class="kw">in</span> all_cntry <span class="cf">if</span> x <span class="kw">not</span> <span class="kw">in</span> present_cntry]</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    absent_df <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">'year'</span>: year,</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">'country'</span>: absent_cntry,</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>        <span class="st">'receiving'</span>: <span class="dv">0</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>    dff <span class="op">=</span> pd.concat([group[<span class="dv">1</span>], absent_df], ignore_index <span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>    dff.sort_values(by<span class="op">=</span><span class="st">'country'</span>, ascending<span class="op">=</span><span class="va">True</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>    dff[<span class="st">'group'</span>] <span class="op">=</span> cntry_group_list</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>    receiving_dfs.append(dff)</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>receiving <span class="op">=</span> pd.concat(receiving_dfs, ignore_index <span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>receiving.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>year</th>
+      <th>country</th>
+      <th>receiving</th>
+      <th>group</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1973</td>
+      <td>Australia</td>
+      <td>0.0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1973</td>
+      <td>Austria</td>
+      <td>0.0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1973</td>
+      <td>Belgium</td>
+      <td>0.0</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1973</td>
+      <td>Brazil</td>
+      <td>312075045.0</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1973</td>
+      <td>Canada</td>
+      <td>0.0</td>
+      <td>5</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># to check whether the countries in the two lists are the same</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>r_c <span class="op">=</span> <span class="bu">list</span>(<span class="bu">set</span>(receiving.country))</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>d_c <span class="op">=</span> <span class="bu">list</span>(<span class="bu">set</span>(donation.country))</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>r_c <span class="op">==</span> d_c</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
+<pre><code>True</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>all_df <span class="op">=</span> donation</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>all_df[<span class="st">'receiving'</span>] <span class="op">=</span> receiving[<span class="st">'receiving'</span>]</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>all_df[<span class="st">'d_minus_r'</span>] <span class="op">=</span> all_df[<span class="st">'donation'</span>] <span class="op">-</span> all_df[<span class="st">'receiving'</span>]</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>all_df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="15">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>year</th>
+      <th>country</th>
+      <th>donation</th>
+      <th>group</th>
+      <th>receiving</th>
+      <th>d_minus_r</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1973</td>
+      <td>Australia</td>
+      <td>46285863.0</td>
+      <td>1</td>
+      <td>0.0</td>
+      <td>46285863.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1973</td>
+      <td>Austria</td>
+      <td>0.0</td>
+      <td>2</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1973</td>
+      <td>Belgium</td>
+      <td>39251336.0</td>
+      <td>3</td>
+      <td>0.0</td>
+      <td>39251336.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1973</td>
+      <td>Brazil</td>
+      <td>0.0</td>
+      <td>4</td>
+      <td>312075045.0</td>
+      <td>-312075045.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1973</td>
+      <td>Canada</td>
+      <td>437928427.0</td>
+      <td>5</td>
+      <td>0.0</td>
+      <td>437928427.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>all_df[<span class="st">'year'</span>] <span class="op">=</span> pd.to_datetime(all_df[<span class="st">'year'</span>], <span class="bu">format</span><span class="op">=</span><span class="st">'%Y'</span>)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co"># We only plot group 1, for simplicity</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>group1 <span class="op">=</span> all_df[all_df.group <span class="op">==</span> <span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>plt.figure()</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>alt.Chart(group1).mark_line().encode(</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">'year:T'</span>,</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> alt.Y(</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">'d_minus_r:Q'</span>,</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>        title <span class="op">=</span> <span class="st">'Donation minus receiving'</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span><span class="st">'country:N'</span>,</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>    strokeDash<span class="op">=</span><span class="st">'country:N'</span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>&lt;Figure size 672x480 with 0 Axes&gt;</code></pre>
+</div>
+</div>
+<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Altair plot render
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Quarto 貌似渲染不出 altair 画的图。日后琢磨。</p>
+</div>
+</div>
+</section>
+<section id="using-python-visualization-libraries-in-rstudio" class="level1">
+<h1>Using Python Visualization Libraries in RStudio</h1>
+<section id="matplotlib" class="level2">
+<h2 class="anchored" data-anchor-id="matplotlib">Matplotlib</h2>
+<div class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">0</span>)</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>mu <span class="op">=</span> <span class="dv">200</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>sigma <span class="op">=</span> <span class="dv">25</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.random.normal(mu, sigma, size<span class="op">=</span><span class="dv">100</span>)</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>fig, (ax0, ax1) <span class="op">=</span> plt.subplots(ncols<span class="op">=</span><span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">4</span>))</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>ax0.hist(x, <span class="dv">20</span>, density<span class="op">=</span><span class="dv">1</span>, histtype<span class="op">=</span><span class="st">'stepfilled'</span>, facecolor<span class="op">=</span><span class="st">'g'</span>, alpha<span class="op">=</span><span class="fl">0.75</span>)</span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>ax0.set_title(<span class="st">'stepfilled'</span>)</span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a histogram by providing the bin edges (unequally spaced).</span></span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>bins <span class="op">=</span> [<span class="dv">100</span>, <span class="dv">150</span>, <span class="dv">180</span>, <span class="dv">195</span>, <span class="dv">205</span>, <span class="dv">220</span>, <span class="dv">250</span>, <span class="dv">300</span>]</span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>ax1.hist(x, bins, density<span class="op">=</span><span class="dv">1</span>, histtype<span class="op">=</span><span class="st">'bar'</span>, rwidth<span class="op">=</span><span class="fl">0.8</span>)</span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>ax1.set_title(<span class="st">'unequal bins'</span>)</span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="index_files/figure-html/cell-19-output-1.png" width="757" height="374"></p>
+</div>
+</div>
+</section>
+<section id="pandas" class="level2">
+<h2 class="anchored" data-anchor-id="pandas">Pandas</h2>
+<div class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>dd <span class="op">=</span> pd.DataFrame(np.random.randn(<span class="dv">10</span>, <span class="dv">10</span>)).applymap(<span class="bu">abs</span>)</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>dd <span class="op">=</span> dd.cumsum()</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>plt.figure()</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>dd.plot.bar(colormap<span class="op">=</span><span class="st">'Greens'</span>)</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>&lt;Figure size 672x480 with 0 Axes&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="index_files/figure-html/cell-20-output-2.png" width="566" height="407"></p>
+</div>
+</div>
+</section>
+<section id="seaborn" class="level2">
+<h2 class="anchored" data-anchor-id="seaborn">Seaborn</h2>
+<div class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>sns.<span class="bu">set</span>(style<span class="op">=</span><span class="st">"whitegrid"</span>, palette<span class="op">=</span><span class="st">"muted"</span>)</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the example iris dataset</span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>iris <span class="op">=</span> sns.load_dataset(<span class="st">"iris"</span>)</span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a><span class="co"># "Melt" the dataset to "long-form" or "tidy" representation</span></span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>iris <span class="op">=</span> pd.melt(iris, <span class="st">"species"</span>, var_name<span class="op">=</span><span class="st">"measurement"</span>)</span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>plt.figure()</span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Draw a categorical scatterplot to show each observation</span></span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>sns.swarmplot(x<span class="op">=</span><span class="st">"measurement"</span>, y<span class="op">=</span><span class="st">"value"</span>, hue<span class="op">=</span><span class="st">"species"</span>, palette<span class="op">=</span>[<span class="st">"r"</span>, <span class="st">"c"</span>, <span class="st">"y"</span>], data<span class="op">=</span>iris)</span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="index_files/figure-html/cell-21-output-1.png" width="581" height="435"></p>
+</div>
+</div>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
